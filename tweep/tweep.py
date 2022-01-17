@@ -18,12 +18,17 @@ def reply_generator(sub):
 
 
 def main():
-    for sub in agent.domain("twitter.com").new():
-        if rbot.already_done(sub):
-            continue
-        reply = reply_generator(sub)
-        rbot.reply(sub, reply)
-        time.sleep(20)
+    while True:
+        times = 0
+        for sub in agent.domain("twitter.com").new():
+            if times >= 30:
+                break
+            if rbot.already_done(sub):
+                continue
+            reply = reply_generator(sub)
+            rbot.reply(sub, reply)
+            time.sleep(60)
+            times += 1
 
 
 keep_alive()
