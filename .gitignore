@@ -1,0 +1,4 @@
+__pycache__/
+tweep/.env
+tweep/__pycache__/
+origin
